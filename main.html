@@ -12,6 +12,7 @@
       --neon-green: #39ff14;
       --neon-purple: #bf00ff;
       --neon-yellow: #ffff00;
+      --neon-orange: #ff8c00;
       --dark-bg: #0a0a0a;
       --darker-bg: #050505;
       --text-color: #f0f0f0;
@@ -359,31 +360,131 @@
       margin-bottom: 15px;
     }
 
-    /* Библиотеки */
-    .libraries-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
+    /* Новые стили для стеков и категорий */
+    .stacks-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
 
-    .library-tag {
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid var(--neon-pink);
-      padding: 10px 20px;
-      border-radius: 30px;
+    .stack-card {
+      background: rgba(15, 15, 15, 0.8);
+      border-radius: 10px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stack-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .stack-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+    }
+
+    .stack-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stack-icon {
+      font-size: 2.5rem;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .stack-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--neon-green);
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .stack-category {
       font-family: 'VT323', monospace;
       font-size: 1.2rem;
+      color: var(--neon-blue);
+      opacity: 0.8;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .tech-tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
     }
 
-    .library-tag:hover {
-      background: var(--neon-pink);
-      color: var(--dark-bg);
-      transform: scale(1.1) rotate(3deg);
-      box-shadow: 0 0 15px var(--neon-pink);
+    .tech-tag:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .tech-tag.core {
+      border-color: var(--neon-green);
+      color: var(--neon-green);
+    }
+
+    .tech-tag.web {
+      border-color: var(--neon-blue);
+      color: var(--neon-blue);
+    }
+
+    .tech-tag.gui {
+      border-color: var(--neon-pink);
+      color: var(--neon-pink);
+    }
+
+    .tech-tag.security {
+      border-color: var(--neon-orange);
+      color: var(--neon-orange);
+    }
+
+    .tech-tag.util {
+      border-color: var(--neon-yellow);
+      color: var(--neon-yellow);
+    }
+
+    .tech-tag.db {
+      border-color: var(--neon-purple);
+      color: var(--neon-purple);
+    }
+
+    .stack-description {
+      margin-top: 20px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #aaa;
+      font-style: italic;
     }
 
     /* Проекты */
@@ -851,6 +952,24 @@
         top: 10px;
         right: 10px;
       }
+
+      .stacks-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .stack-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .stack-icon {
+        margin: 0 auto;
+      }
+
+      .tech-tags {
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -965,43 +1084,173 @@
     </section>
 
     <section class="section">
-      <h2 class="section-title" data-ru="Библиотеки, которые я использовал" data-en="Libraries I've Used">Libraries I've Used</h2>
-      <div class="libraries-container">
-        <div class="library-tag">tkinter</div>
-        <div class="library-tag">requests</div>
-        <div class="library-tag">telebot</div>
-        <div class="library-tag">googletrans</div>
-        <div class="library-tag">pyautogui</div>
-        <div class="library-tag">pyperclip</div>
-        <div class="library-tag">speedtest</div>
-        <div class="library-tag">playsound</div>
-        <div class="library-tag">psutil</div>
-        <div class="library-tag">GPUtil</div>
-        <div class="library-tag">cpuinfo</div>
-        <div class="library-tag">wmi</div>
-        <div class="library-tag">pywifi</div>
-        <div class="library-tag">keyboard</div>
-        <div class="library-tag">PIL</div>
-        <div class="library-tag">gTTS</div>
-        <div class="library-tag">pydub</div>
-        <div class="library-tag">translate</div>
-        <div class="library-tag">Faker</div>
-        <div class="library-tag">math</div>
-        <div class="library-tag">random</div>
-        <div class="library-tag">time</div>
-        <div class="library-tag">threading</div>
-        <div class="library-tag">datetime</div>
-        <div class="library-tag">os</div>
-        <div class="library-tag">json</div>
-        <div class="library-tag">string</div>
-        <div class="library-tag">ctypes</div>
-        <div class="library-tag">pywifi</div>
-        <div class="library-tag">webbrowser</div>
-        <div class="library-tag">enum</div>
-        <div class="library-tag">uuid</div>
-        <div class="library-tag">dataclasses</div>
-        <div class="library-tag">Django</div>
-        <div class="library-tag">django-filter</div>
+      <h2 class="section-title" data-ru="Мой стек технологий по категориям" data-en="My Tech Stack by Category">My Tech Stack by Category</h2>
+      <p data-ru="Все библиотеки, которые я использовал, разделенные по областям применения" data-en="All libraries I've used, categorized by application areas" style="margin-bottom: 40px; color: #aaa; font-style: italic;">All libraries I've used, categorized by application areas</p>
+      
+      <div class="stacks-container">
+        <!-- Ядро Python -->
+        <div class="stack-card">
+          <div class="stack-header">
+            <div class="stack-icon" style="color: var(--neon-green);">
+              <i class="fas fa-code"></i>
+            </div>
+            <div>
+              <h3 class="stack-title" data-ru="Ядро Python" data-en="Python Core">Python Core</h3>
+              <p class="stack-category" data-ru="Стандартная библиотека" data-en="Standard Library">Standard Library</p>
+            </div>
+          </div>
+          <div class="tech-tags">
+            <div class="tech-tag core">math</div>
+            <div class="tech-tag core">random</div>
+            <div class="tech-tag core">time</div>
+            <div class="tech-tag core">threading</div>
+            <div class="tech-tag core">datetime</div>
+            <div class="tech-tag core">os</div>
+            <div class="tech-tag core">json</div>
+            <div class="tech-tag core">string</div>
+            <div class="tech-tag core">ctypes</div>
+            <div class="tech-tag core">webbrowser</div>
+            <div class="tech-tag core">enum</div>
+            <div class="tech-tag core">uuid</div>
+            <div class="tech-tag core">dataclasses</div>
+          </div>
+          <p class="stack-description" data-ru="Стандартные модули Python - основа основ. Знаю их как свои пять пальцев (ну, почти)." data-en="Python standard modules - the foundation. I know them like the back of my hand (well, almost).">Python standard modules - the foundation. I know them like the back of my hand (well, almost).</p>
+        </div>
+
+        <!-- Веб-разработка -->
+        <div class="stack-card">
+          <div class="stack-header">
+            <div class="stack-icon" style="color: var(--neon-blue);">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div>
+              <h3 class="stack-title" data-ru="Веб-разработка" data-en="Web Development">Web Development</h3>
+              <p class="stack-category" data-ru="Фреймворки и HTTP" data-en="Frameworks & HTTP">Frameworks & HTTP</p>
+            </div>
+          </div>
+          <div class="tech-tags">
+            <div class="tech-tag web">Django</div>
+            <div class="tech-tag web">requests</div>
+            <div class="tech-tag web">django-filter</div>
+          </div>
+          <p class="stack-description" data-ru="Создание веб-приложений и работа с HTTP. Django - мой выбор для серьезных проектов." data-en="Building web applications and working with HTTP. Django is my choice for serious projects.">Building web applications and working with HTTP. Django is my choice for serious projects.</p>
+        </div>
+
+        <!-- Графические интерфейсы -->
+        <div class="stack-card">
+          <div class="stack-header">
+            <div class="stack-icon" style="color: var(--neon-pink);">
+              <i class="fas fa-window-maximize"></i>
+            </div>
+            <div>
+              <h3 class="stack-title" data-ru="GUI Приложения" data-en="GUI Applications">GUI Applications</h3>
+              <p class="stack-category" data-ru="Десктопные приложения" data-en="Desktop Applications">Desktop Applications</p>
+            </div>
+          </div>
+          <div class="tech-tags">
+            <div class="tech-tag gui">tkinter</div>
+            <div class="tech-tag gui">pyautogui</div>
+          </div>
+          <p class="stack-description" data-ru="Создание десктопных приложений с интерфейсом. Tkinter - для когда нужны кнопки и окна." data-en="Creating desktop applications with interfaces. Tkinter - for when you need buttons and windows.">Creating desktop applications with interfaces. Tkinter - for when you need buttons and windows.</p>
+        </div>
+
+        <!-- Безопасность и сети -->
+        <div class="stack-card">
+          <div class="stack-header">
+            <div class="stack-icon" style="color: var(--neon-orange);">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div>
+              <h3 class="stack-title" data-ru="Безопасность и сети" data-en="Security & Networking">Security & Networking</h3>
+              <p class="stack-category" data-ru="Анализ и защита" data-en="Analysis & Protection">Analysis & Protection</p>
+            </div>
+          </div>
+          <div class="tech-tags">
+            <div class="tech-tag security">pywifi</div>
+            <div class="tech-tag security">keyboard</div>
+            <div class="tech-tag security">Faker</div>
+          </div>
+          <p class="stack-description" data-ru="Инструменты для анализа безопасности и работы с сетями. Для образовательных целей, конечно же!" data-en="Tools for security analysis and networking. For educational purposes only, of course!">Tools for security analysis and networking. For educational purposes only, of course!</p>
+        </div>
+
+        <!-- Работа с данными -->
+        <div class="stack-card">
+          <div class="stack-header">
+            <div class="stack-icon" style="color: var(--neon-purple);">
+              <i class="fas fa-database"></i>
+            </div>
+            <div>
+              <h3 class="stack-title" data-ru="Работа с данными" data-en="Data Processing">Data Processing</h3>
+              <p class="stack-category" data-ru="Обработка и анализ" data-en="Processing & Analysis">Processing & Analysis</p>
+            </div>
+          </div>
+          <div class="tech-tags">
+            <div class="tech-tag db">json</div>
+            <div class="tech-tag db">PIL</div>
+            <div class="tech-tag db">Faker</div>
+          </div>
+          <p class="stack-description" data-ru="Обработка и анализ данных. От JSON до изображений - могу работать с разными форматами." data-en="Data processing and analysis. From JSON to images - I can work with different formats.">Data processing and analysis. From JSON to images - I can work with different formats.</p>
+        </div>
+
+        <!-- Системное программирование -->
+        <div class="stack-card">
+          <div class="stack-header">
+            <div class="stack-icon" style="color: var(--neon-yellow);">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <div>
+              <h3 class="stack-title" data-ru="Системное программирование" data-en="System Programming">System Programming</h3>
+              <p class="stack-category" data-ru="Мониторинг и управление" data-en="Monitoring & Management">Monitoring & Management</p>
+            </div>
+          </div>
+          <div class="tech-tags">
+            <div class="tech-tag util">psutil</div>
+            <div class="tech-tag util">GPUtil</div>
+            <div class="tech-tag util">cpuinfo</div>
+            <div class="tech-tag util">wmi</div>
+            <div class="tech-tag util">pyperclip</div>
+          </div>
+          <p class="stack-description" data-ru="Мониторинг системы и работа с аппаратным обеспечением. Знаю, что происходит с компьютером." data-en="System monitoring and hardware interaction. I know what's happening with the computer.">System monitoring and hardware interaction. I know what's happening with the computer.</p>
+        </div>
+
+        <!-- Мультимедиа -->
+        <div class="stack-card">
+          <div class="stack-header">
+            <div class="stack-icon" style="color: var(--neon-blue);">
+              <i class="fas fa-music"></i>
+            </div>
+            <div>
+              <h3 class="stack-title" data-ru="Мультимедиа" data-en="Multimedia">Multimedia</h3>
+              <p class="stack-category" data-ru="Аудио и графика" data-en="Audio & Graphics">Audio & Graphics</p>
+            </div>
+          </div>
+          <div class="tech-tags">
+            <div class="tech-tag util">playsound</div>
+            <div class="tech-tag util">gTTS</div>
+            <div class="tech-tag util">pydub</div>
+          </div>
+          <p class="stack-description" data-ru="Работа с аудио и графикой. Могу создать музыкальный плеер или озвучить текст." data-en="Working with audio and graphics. I can create a music player or voice text.">Working with audio and graphics. I can create a music player or voice text.</p>
+        </div>
+
+        <!-- Интеграции и API -->
+        <div class="stack-card">
+          <div class="stack-header">
+            <div class="stack-icon" style="color: var(--neon-green);">
+              <i class="fas fa-plug"></i>
+            </div>
+            <div>
+              <h3 class="stack-title" data-ru="Интеграции и API" data-en="Integrations & API">Integrations & API</h3>
+              <p class="stack-category" data-ru="Внешние сервисы" data-en="External Services">External Services</p>
+            </div>
+          </div>
+          <div class="tech-tags">
+            <div class="tech-tag web">telebot</div>
+            <div class="tech-tag web">speedtest</div>
+            <div class="tech-tag web">googletrans</div>
+            <div class="tech-tag web">translate</div>
+          </div>
+          <p class="stack-description" data-ru="Интеграция с внешними сервисами. Telegram боты, переводчики, тест скорости - всё под силу." data-en="Integration with external services. Telegram bots, translators, speed tests - I can do it all.">Integration with external services. Telegram bots, translators, speed tests - I can do it all.</p>
+        </div>
       </div>
 
       <div class="typing-demo" style="margin-top: 30px;" data-ru="$ pip install все_эти_библиотеки" data-en="$ pip install all_these_libraries">
@@ -1198,7 +1447,9 @@
     <footer>
       <div class="glitch-text" data-text="Thanks for checking out my portfolio!" data-ru="Спасибо, что заглянули в моё портфолио!" data-en="Thanks for checking out my portfolio!">Thanks for checking out my portfolio!</div>
       <p class="final-message" data-ru="P.S. Если вы дочитали до этого места, значит вы либо рекрутер, либо у вас слишком много свободного времени" data-en="P.S. If you've read this far, you're either a recruiter or have too much free time">P.S. If you've read this far, you're either a recruiter or have too much free time</p>
-
+      <div class="secret-message">
+        <i class="fas fa-terminal"></i> Find all easter eggs!
+      </div>
     </footer>
   </div>
 
@@ -1312,25 +1563,40 @@
             entry.target.style.transform = 'translateY(0)';
 
             // Add random animations for elements
-            if(entry.target.classList.contains('project-card')) {
-              const delay = Math.random() * 0.5;
+            if(entry.target.classList.contains('stack-card')) {
+              const delay = Math.random() * 0.3;
               entry.target.style.transition = `all 0.6s ${delay}s`;
             }
           }
         });
       }, { threshold: 0.1 });
 
-      document.querySelectorAll('.skill-card, .project-card, .stat-item').forEach(el => {
+      // Animate stack cards
+      document.querySelectorAll('.stack-card').forEach(el => {
         el.style.opacity = 0;
-        el.style.transform = 'translateY(30px)';
+        el.style.transform = 'translateY(30px) scale(0.95)';
         el.style.transition = 'opacity 0.6s, transform 0.6s';
         observer.observe(el);
       });
 
-      // Animation for libraries
-      const libraryTags = document.querySelectorAll('.library-tag');
-      libraryTags.forEach((tag, index) => {
+      // Animate tech tags with staggered effect
+      document.querySelectorAll('.tech-tag').forEach((tag, index) => {
         tag.style.animationDelay = `${index * 0.05}s`;
+        tag.style.opacity = 0;
+        tag.style.transform = 'translateY(10px)';
+        
+        const tagObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+              }, index * 30);
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        tagObserver.observe(tag);
       });
 
       // Random effects for elements
@@ -1346,7 +1612,7 @@
       canvas.height = window.innerHeight;
     });
 
-
+    // Secret messages in different languages
     const secretMessagesEn = [
       "Find all easter eggs!",
       "sudo make me a sandwich",
@@ -1356,6 +1622,17 @@
       "// TODO: Write comments",
       "Stop reading, go code!",
       "404 Humor not found"
+    ];
+
+    const secretMessagesRu = [
+      "Найди все пасхалки!",
+      "sudo сделай мне бутерброд",
+      "Не уходи без компиляции!",
+      "Это не баг, это фича!",
+      "У меня работает!",
+      "// TODO: Написать комментарии",
+      "Хватит читать, иди коди!",
+      "404 Юмор не найден"
     ];
 
     const secretElement = document.querySelector('.secret-message');
@@ -1373,6 +1650,24 @@
       if (e.target.classList.contains('lang-btn')) {
         currentLang = e.target.getAttribute('data-lang');
       }
+    });
+
+    // Hover effects for stack cards
+    document.querySelectorAll('.stack-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        const icon = this.querySelector('.stack-icon i');
+        if (icon) {
+          icon.style.transform = 'scale(1.2) rotate(10deg)';
+          icon.style.transition = 'transform 0.3s';
+        }
+      });
+
+      card.addEventListener('mouseleave', function() {
+        const icon = this.querySelector('.stack-icon i');
+        if (icon) {
+          icon.style.transform = 'scale(1) rotate(0deg)';
+        }
+      });
     });
   </script>
 </body>
