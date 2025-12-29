@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>// STRANGE DEVELOPER | CAPTCHA</title>
+  <title>waratecs123 | GitHub</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* GitHub-like стили */
     :root {
-      --neon-pink: #ff00ff;
-      --neon-blue: #00ffff;
-      --neon-green: #39ff14;
-      --neon-purple: #bf00ff;
-      --neon-yellow: #ffff00;
-      --dark-bg: #0a0a0a;
-      --darker-bg: #050505;
-      --text-color: #f0f0f0;
+      --color-bg-canvas: #0d1117;
+      --color-bg-primary: #0d1117;
+      --color-bg-secondary: #161b22;
+      --color-bg-tertiary: #21262d;
+      --color-border-primary: #30363d;
+      --color-border-secondary: #21262d;
+      --color-text-primary: #c9d1d9;
+      --color-text-secondary: #8b949e;
+      --color-text-tertiary: #6e7681;
+      --color-accent: #58a6ff;
+      --color-accent-fg: #58a6ff;
+      --color-success: #238636;
+      --color-danger: #f85149;
+      --color-fg-muted: #8b949e;
     }
-
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323&family=Comic+Neue:wght@400;700&display=swap');
 
     * {
       margin: 0;
@@ -26,613 +31,986 @@
     }
 
     body {
-      font-family: 'Comic Neue', cursive;
-      background-color: var(--dark-bg);
-      color: var(--text-color);
-      overflow-x: hidden;
-      background-image:
-        radial-gradient(circle at 10% 20%, rgba(255, 0, 255, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 90% 60%, rgba(0, 255, 255, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 50% 80%, rgba(57, 255, 20, 0.05) 0%, transparent 20%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .matrix-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      opacity: 0.1;
-    }
-
-    .noise {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      opacity: 0.05;
-      z-index: -1;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+      background-color: var(--color-bg-primary);
+      color: var(--color-text-primary);
+      line-height: 1.5;
     }
 
     .container {
-      max-width: 600px;
-      width: 100%;
+      max-width: 1280px;
       margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .header {
+      background-color: var(--color-bg-secondary);
+      border-bottom: 1px solid var(--color-border-primary);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      text-decoration: none;
+    }
+
+    .logo:hover {
+      color: var(--color-accent);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: var(--color-text-primary);
     }
 
     /* Language Switcher */
     .language-switcher {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
       display: flex;
-      gap: 10px;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border-primary);
+      border-radius: 6px;
+      padding: 4px;
     }
 
     .lang-btn {
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid var(--neon-blue);
-      color: var(--neon-blue);
-      padding: 8px 15px;
-      border-radius: 5px;
+      background: none;
+      border: none;
+      color: var(--color-text-secondary);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 13px;
       cursor: pointer;
-      font-family: 'VT323', monospace;
-      font-size: 1.2rem;
-      transition: all 0.3s;
+      transition: all 0.2s;
     }
 
     .lang-btn:hover {
-      background: var(--neon-blue);
-      color: var(--dark-bg);
+      background-color: var(--color-bg-secondary);
+      color: var(--color-text-primary);
     }
 
     .lang-btn.active {
-      background: var(--neon-blue);
-      color: var(--dark-bg);
-      box-shadow: 0 0 10px var(--neon-blue);
+      background-color: var(--color-bg-secondary);
+      color: var(--color-text-primary);
+      font-weight: 500;
     }
 
-    /* Неоновый заголовок */
-    .neon-header {
-      text-align: center;
-      padding: 40px 0 30px;
-      position: relative;
-    }
-
-    .neon-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      margin-bottom: 15px;
-      text-shadow:
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 15px var(--neon-pink),
-        0 0 20px var(--neon-pink),
-        0 0 35px var(--neon-pink),
-        0 0 40px var(--neon-pink);
-      animation: neon-flicker 3s infinite alternate;
-      position: relative;
-    }
-
-    @keyframes neon-flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        text-shadow:
-          0 0 5px #fff,
-          0 0 10px #fff,
-          0 0 15px var(--neon-pink),
-          0 0 20px var(--neon-pink),
-          0 0 35px var(--neon-pink),
-          0 0 40px var(--neon-pink);
-      }
-      20%, 24%, 55% {
-        text-shadow: none;
-      }
-    }
-
-    .neon-subtitle {
-      font-family: 'VT323', monospace;
-      font-size: 1.5rem;
-      color: var(--neon-blue);
-      margin-bottom: 30px;
-      text-shadow: 0 0 10px var(--neon-blue);
-    }
-
-    /* Секция капчи */
-    .captcha-section {
-      background: rgba(10, 10, 10, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
-      padding: 40px;
-      border-radius: 10px;
-      margin-bottom: 30px;
-    }
-
-    .captcha-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue), var(--neon-green));
-    }
-
-    .section-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 25px;
-      color: var(--neon-blue);
-      text-shadow: 0 0 10px var(--neon-blue);
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--neon-pink), transparent);
-    }
-
-    /* Капча контейнер */
-    .captcha-container {
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid var(--neon-green);
-      border-radius: 5px;
-      padding: 25px;
-      font-family: 'VT323', monospace;
-      font-size: 1.3rem;
-      margin: 20px 0;
-      position: relative;
-      box-shadow:
-        0 0 10px var(--neon-green),
-        inset 0 0 10px rgba(57, 255, 20, 0.1);
-    }
-
-    .captcha-header {
+    /* User Profile */
+    .user-profile {
       display: flex;
       align-items: center;
-      margin-bottom: 15px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(57, 255, 20, 0.3);
+      gap: 24px;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--color-border-primary);
     }
 
-    .captcha-buttons {
-      display: flex;
-      gap: 8px;
+    .avatar-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
     }
 
-    .captcha-button {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-
-    .captcha-button.close {
-      background: #ff5f57;
-    }
-
-    .captcha-button.minimize {
-      background: #ffbd2e;
-    }
-
-    .captcha-button.maximize {
-      background: #28ca42;
-    }
-
-    .captcha-title {
-      margin-left: 15px;
-      color: var(--neon-green);
-    }
-
-    .captcha-content {
-      line-height: 1.5;
-    }
-
-    .captcha-line {
-      margin-bottom: 8px;
-    }
-
-    .prompt {
-      color: var(--neon-pink);
-    }
-
-    .command {
-      color: var(--neon-blue);
-    }
-
-    .comment {
-      color: #666;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      height: 18px;
-      background: var(--neon-green);
-      animation: blink 1s infinite;
-      margin-left: 5px;
-      vertical-align: middle;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    /* Капча изображение */
-    .captcha-image {
+    .avatar {
       width: 100%;
-      height: 150px;
-      background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
-      border-radius: 5px;
-      margin: 20px 0;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid var(--color-border-primary);
+      object-fit: cover;
+      background-color: var(--color-bg-tertiary);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3rem;
-      letter-spacing: 10px;
-      font-weight: bold;
-      color: white;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      position: relative;
-      overflow: hidden;
-      font-family: 'Orbitron', sans-serif;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      text-align: center;
+      padding: 10px;
     }
 
-    .captcha-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
+    .avatar-placeholder {
       width: 100%;
       height: 100%;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.1),
-        rgba(0, 0, 0, 0.1) 1px,
-        transparent 1px,
-        transparent 5px
-      );
-    }
-
-    .captcha-image::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.3) 80%);
-    }
-
-    /* Поля ввода */
-    .input-group {
-      margin: 25px 0;
-    }
-
-    .input-label {
-      display: block;
-      margin-bottom: 10px;
-      font-family: 'VT323', monospace;
-      font-size: 1.3rem;
-      color: var(--neon-blue);
-    }
-
-    .captcha-input {
-      width: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid var(--neon-pink);
-      padding: 15px;
-      border-radius: 5px;
-      color: var(--text-color);
-      font-family: 'VT323', monospace;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      transition: all 0.3s;
-      box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.1);
-    }
-
-    .captcha-input:focus {
-      outline: none;
-      border-color: var(--neon-green);
-      box-shadow:
-        0 0 10px var(--neon-green),
-        inset 0 0 10px rgba(57, 255, 20, 0.1);
-    }
-
-    /* Кнопки */
-    .captcha-buttons-container {
+      border-radius: 50%;
+      border: 2px solid var(--color-border-primary);
+      background-color: var(--color-bg-tertiary);
       display: flex;
-      gap: 15px;
-      margin-top: 30px;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      text-align: center;
+      padding: 10px;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .captcha-btn {
-      flex: 1;
-      background: transparent;
-      border: 2px solid;
-      padding: 15px;
-      border-radius: 0;
+    .avatar-placeholder i {
+      font-size: 32px;
+      color: var(--color-text-tertiary);
+    }
+
+    .user-info h1 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .user-info .username {
+      color: var(--color-text-secondary);
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .user-bio {
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin-bottom: 16px;
+    }
+
+    .user-stats {
+      display: flex;
+      gap: 16px;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+    }
+
+    .stat-count {
+      font-weight: 600;
+    }
+
+    /* GitHub-like sections */
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--color-border-primary);
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    /* Repositories */
+    .repositories {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 16px;
+    }
+
+    .repo {
+      background-color: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-primary);
+      border-radius: 6px;
+      padding: 20px;
+      transition: all 0.2s;
+    }
+
+    .repo:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .repo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .repo-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-accent);
       text-decoration: none;
-      font-family: 'VT323', monospace;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s;
-      cursor: pointer;
-      z-index: 1;
     }
 
-    .submit-btn {
-      color: var(--neon-green);
-      border-color: var(--neon-green);
-      box-shadow:
-        0 0 10px var(--neon-green),
-        inset 0 0 10px rgba(57, 255, 20, 0.2);
+    .repo-title:hover {
+      text-decoration: underline;
     }
 
-    .submit-btn:hover {
-      color: var(--dark-bg);
-      background: var(--neon-green);
-      box-shadow:
-        0 0 20px var(--neon-green),
-        0 0 40px var(--neon-green);
-      transform: translateY(-5px);
+    .repo-description {
+      color: var(--color-text-secondary);
+      margin-bottom: 16px;
+      font-size: 14px;
     }
 
-    .refresh-btn {
-      color: var(--neon-blue);
-      border-color: var(--neon-blue);
-      box-shadow:
-        0 0 10px var(--neon-blue),
-        inset 0 0 10px rgba(0, 255, 255, 0.2);
+    .repo-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--color-text-tertiary);
     }
 
-    .refresh-btn:hover {
-      color: var(--dark-bg);
-      background: var(--neon-blue);
-      box-shadow:
-        0 0 20px var(--neon-blue),
-        0 0 40px var(--neon-blue);
-      transform: translateY(-5px);
+    .repo-language {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .captcha-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
-      z-index: -1;
+    .language-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--color-accent);
     }
 
-    .captcha-btn:hover::before {
-      left: 100%;
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
     }
 
-    /* Сообщения */
-    .message {
-      padding: 15px;
-      border-radius: 5px;
-      margin: 20px 0;
-      font-family: 'VT323', monospace;
-      font-size: 1.3rem;
+    .tag {
+      background-color: var(--color-bg-tertiary);
+      color: var(--color-text-secondary);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .tag.python {
+      background-color: #3572A5;
+      color: white;
+    }
+
+    .tag.django {
+      background-color: #092e20;
+      color: white;
+    }
+
+    .tag.security {
+      background-color: #f0b429;
+      color: #24292f;
+    }
+
+    .tag.web {
+      background-color: #f1e05a;
+      color: #24292f;
+    }
+
+    .tag.gui {
+      background-color: #2b7489;
+      color: white;
+    }
+
+    .tag.tool {
+      background-color: #555555;
+      color: white;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-category {
+      background-color: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-primary);
+      border-radius: 6px;
+      padding: 20px;
+    }
+
+    .skill-category h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-item {
+      background-color: var(--color-bg-tertiary);
+      color: var(--color-text-secondary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      background-color: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-primary);
+      border-radius: 6px;
+      padding: 20px;
       text-align: center;
-      display: none;
+      transition: transform 0.2s;
     }
 
-    .success-message {
-      background: rgba(57, 255, 20, 0.1);
-      border: 1px solid var(--neon-green);
-      color: var(--neon-green);
-      box-shadow: 0 0 10px var(--neon-green);
+    .stat-card:hover {
+      transform: translateY(-2px);
     }
 
-    .error-message {
-      background: rgba(255, 0, 0, 0.1);
-      border: 1px solid #ff0000;
-      color: #ff0000;
-      box-shadow: 0 0 10px #ff0000;
+    .stat-number {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
-    /* Таймер перехода */
-    .redirect-timer {
-      font-family: 'VT323', monospace;
-      font-size: 1.5rem;
+    .stat-label {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 48px;
+      padding: 32px 0;
+      border-top: 1px solid var(--color-border-primary);
       text-align: center;
-      margin-top: 20px;
-      color: var(--neon-yellow);
-      display: none;
+      color: var(--color-text-secondary);
+      font-size: 14px;
     }
 
-    .redirect-timer .countdown {
-      font-weight: bold;
-      color: var(--neon-green);
-    }
-
-    /* Футер */
-    footer {
-      text-align: center;
-      padding: 30px 0;
-      margin-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .final-message {
-      font-family: 'VT323', monospace;
-      font-size: 1.2rem;
-      margin-top: 20px;
-      color: #888;
-    }
-
-    /* Плавающие элементы */
-    .floating-elements {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .floating-element {
-      position: absolute;
-      font-size: 2rem;
-      opacity: 0.1;
-      animation: floatAround 15s linear infinite;
-    }
-
-    @keyframes floatAround {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-      33% {
-        transform: translate(100px, 100px) rotate(120deg);
-      }
-      66% {
-        transform: translate(-50px, 150px) rotate(240deg);
-      }
-      100% {
-        transform: translate(0, 0) rotate(360deg);
-      }
-    }
-
-    /* Адаптивность */
+    /* Responsive */
     @media (max-width: 768px) {
-      .neon-title {
-        font-size: 2rem;
-      }
-
-      .captcha-section {
-        padding: 25px 20px;
-      }
-
-      .captcha-buttons-container {
+      .header-container {
         flex-direction: column;
+        gap: 16px;
       }
 
-      .language-switcher {
-        top: 10px;
-        right: 10px;
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
       }
+
+      .user-profile {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .user-stats {
+        justify-content: center;
+      }
+
+      .repositories {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .repo-header {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .repo {
+      animation: fadeIn 0.3s ease-out;
     }
   </style>
 </head>
 <body>
-  <div class="matrix-bg" id="matrixCanvas"></div>
-  <div class="noise"></div>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <i class="fab fa-github"></i>
+        <span class="username-text">waratecs123</span>
+      </a>
 
-  <!-- Language Switcher -->
-  <div class="language-switcher">
-    <button class="lang-btn" data-lang="en">EN</button>
-    <button class="lang-btn active" data-lang="ru">RU</button>
-  </div>
+      <div class="nav">
+        <a href="#repositories" class="nav-link" data-en="Repositories" data-ru="Репозитории">Repositories</a>
+        <a href="#skills" class="nav-link" data-en="Skills" data-ru="Навыки">Skills</a>
+        <a href="#about" class="nav-link" data-en="About" data-ru="Обо мне">About</a>
+      </div>
 
-  <div class="floating-elements">
-    <div class="floating-element" style="top: 10%; left: 5%;">🔒</div>
-    <div class="floating-element" style="top: 20%; left: 90%;">🤖</div>
-    <div class="floating-element" style="top: 50%; left: 10%;">💻</div>
-    <div class="floating-element" style="top: 70%; left: 85%;">⚡</div>
-    <div class="floating-element" style="top: 85%; left: 15%;">🔑</div>
-    <div class="floating-element" style="top: 30%; left: 70%;">🛡️</div>
-  </div>
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+      </div>
+    </div>
+  </header>
 
-  <div class="container">
-    <header class="neon-header">
-      <h1 class="neon-title" data-ru="СТРАННАЯ КАПЧА" data-en="STRANGE CAPTCHA">STRANGE CAPTCHA</h1>
-      <p class="neon-subtitle" data-ru="// Докажи, что ты не бот, странный разработчик" data-en="// Prove you're not a bot, strange developer">// Prove you're not a bot, strange developer</p>
-    </header>
-
-    <section class="captcha-section">
-      <h2 class="section-title" data-ru="Верификация человека" data-en="Human Verification">Human Verification</h2>
-
-      <div class="captcha-container">
-        <div class="captcha-header">
-          <div class="captcha-buttons">
-            <div class="captcha-button close"></div>
-            <div class="captcha-button minimize"></div>
-            <div class="captcha-button maximize"></div>
+  <main class="container">
+    <!-- User Profile -->
+    <section class="user-profile">
+      <div class="avatar-container">
+        <div class="avatar-placeholder">
+          <i class="fas fa-user-circle"></i>
+          <span data-en="Avatar not found" data-ru="Аватар не найден">Avatar not found</span>
+        </div>
+      </div>
+      <div class="user-info">
+        <h1 data-en="Strange Developer" data-ru="Странный Разработчик">Strange Developer</h1>
+        <div class="username">waratecs123</div>
+        <div class="user-bio" data-en="Python developer with 1 year of experience. Love to experiment with different libraries and frameworks. Currently studying information security." data-ru="Python разработчик с 1 годом опыта. Люблю экспериментировать с различными библиотеками и фреймворками. В настоящее время изучаю информационную безопасность.">
+          Python developer with 1 year of experience. Love to experiment with different libraries and frameworks. Currently studying information security.
+        </div>
+        <div class="user-stats">
+          <div class="stat">
+            <span class="stat-count">14</span>
+            <span data-en="repositories" data-ru="репозиториев">repositories</span>
           </div>
-          <div class="captcha-title">captcha_verify.exe</div>
+          <div class="stat">
+            <span class="stat-count">30+</span>
+            <span data-en="technologies" data-ru="технологий">technologies</span>
+          </div>
+          <div class="stat">
+            <span class="stat-count">1</span>
+            <span data-en="year experience" data-ru="год опыта">year experience</span>
+          </div>
         </div>
-        <div class="captcha-content">
-          <div class="captcha-line"><span class="prompt">user@captcha:~$</span> <span class="command" data-ru="cat инструкция.txt" data-en="cat instructions.txt">cat instructions.txt</span></div>
-          <div class="captcha-line" data-ru="Введите текст, который видите ниже:" data-en="Enter the text you see below:">Enter the text you see below:</div>
-          <div class="captcha-line"><span class="comment" data-ru="# Боты не могут пройти эту проверку... надеюсь" data-en="# Bots can't pass this check... I hope"># Bots can't pass this check... I hope</span></div>
-          <div class="captcha-line"><span class="prompt">user@captcha:~$</span> <span class="cursor"></span></div>
-        </div>
-      </div>
-
-      <div class="captcha-image" id="captchaImage">
-        <!-- CAPTCHA text will be generated here -->
-      </div>
-
-      <div class="input-group">
-        <label class="input-label" for="captchaInput" data-ru="Введите текст с изображения:" data-en="Enter the text from the image:">Enter the text from the image:</label>
-        <input type="text" id="captchaInput" class="captcha-input" placeholder="" autocomplete="off">
-      </div>
-
-      <div class="captcha-buttons-container">
-        <button class="captcha-btn refresh-btn" id="refreshCaptcha">
-          <i class="fas fa-sync-alt"></i> <span data-ru="Обновить" data-en="Refresh">Refresh</span>
-        </button>
-        <button class="captcha-btn submit-btn" id="submitCaptcha">
-          <i class="fas fa-check"></i> <span data-ru="Подтвердить" data-en="Verify">Verify</span>
-        </button>
-      </div>
-
-      <div class="message success-message" id="successMessage">
-        <i class="fas fa-check-circle"></i> <span data-ru="Успех! Вы прошли проверку." data-en="Success! You passed the verification.">Success! You passed the verification.</span>
-      </div>
-
-      <div class="message error-message" id="errorMessage">
-        <i class="fas fa-times-circle"></i> <span data-ru="Ошибка! Попробуйте еще раз." data-en="Error! Please try again.">Error! Please try again.</span>
-      </div>
-
-      <div class="redirect-timer" id="redirectTimer">
-        <span data-ru="Перенаправление на главную страницу через" data-en="Redirecting to main page in">Redirecting to main page in</span>
-        <span class="countdown" id="countdown">3</span>
-        <span data-ru="секунды..." data-en="seconds...">seconds...</span>
       </div>
     </section>
 
-    <footer>
-      <div class="final-message" data-ru="P.S. Если вы бот, пожалуйста, уходите. Мы не хотим проблем с матрицей." data-en="P.S. If you're a bot, please leave. We don't want matrix problems.">P.S. If you're a bot, please leave. We don't want matrix problems.</div>
-    </footer>
-  </div>
+    <!-- Repositories Section -->
+    <section id="repositories" class="section">
+      <div class="section-header">
+        <h2 class="section-title" data-en="Public repositories" data-ru="Публичные репозитории">Public repositories</h2>
+        <div class="section-subtitle" data-en="Sorted by update date" data-ru="Отсортировано по дате обновления">Sorted by update date</div>
+      </div>
+
+      <div class="repositories">
+        <!-- Proxy Checker -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Action-On-Ip-Addresses/proxy_check" class="repo-title" target="_blank">
+              proxy-checker
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Program that collects proxies from different sources and checks their functionality" data-ru="Программа, которая собирает proxy с разных источников и проверяет их работоспособность">
+            Program that collects proxies from different sources and checks their functionality
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag tool">Networking</span>
+            <span class="tag tool">Automation</span>
+          </div>
+        </div>
+
+        <!-- Django Projects -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Django-Projects" class="repo-title" target="_blank">
+              django-projects
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #092e20;"></span>
+              <span>Django</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Collection of 8 Django projects on various topics" data-ru="Коллекция из 8 Django проектов на различные темы">
+            Collection of 8 Django projects on various topics
+          </p>
+          <div class="tags">
+            <span class="tag django">Django</span>
+            <span class="tag web">Web Development</span>
+            <span class="tag python">Python</span>
+          </div>
+        </div>
+
+        <!-- IP Address Analyzer -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Action-On-Ip-Addresses/ip_address_checker" class="repo-title" target="_blank">
+              ip-analyzer
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Program that analyzes IP addresses like a detective" data-ru="Программа, которая анализирует IP-адреса как детектив">
+            Program that analyzes IP addresses like a detective
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag security">Security</span>
+            <span class="tag tool">Networking</span>
+          </div>
+        </div>
+
+        <!-- Ultimate Security Multi-Tool Suite -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Ultimate-Security-Multi-Tool-Suite" class="repo-title" target="_blank">
+              security-toolkit
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Multifunctional security toolset for educational purposes" data-ru="Многофункциональный набор инструментов безопасности для образовательных целей">
+            Multifunctional security toolset for educational purposes
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag security">Security</span>
+            <span class="tag tool">Tools</span>
+          </div>
+        </div>
+
+        <!-- Holy Cow Validation Library -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Holy-Cow" class="repo-title" target="_blank">
+              holy-cow-validation
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Own validation library with 30+ validators" data-ru="Собственная библиотека валидации с 30+ валидаторами">
+            Own validation library with 30+ validators
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag tool">Library</span>
+            <span class="tag web">Validation</span>
+          </div>
+        </div>
+
+        <!-- Telegram Bots -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Simple-Telegram-Bots" class="repo-title" target="_blank">
+              telegram-bots
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Collection of Telegram bots including OSINT bot" data-ru="Коллекция Telegram ботов, включая OSINT бота">
+            Collection of Telegram bots including OSINT bot
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag web">Telegram API</span>
+            <span class="tag security">OSINT</span>
+          </div>
+        </div>
+
+        <!-- Monitoring OS -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Monitoring-Os" class="repo-title" target="_blank">
+              system-monitor
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="System monitoring program for hardware tracking" data-ru="Программа мониторинга системы для отслеживания аппаратного обеспечения">
+            System monitoring program for hardware tracking
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag tool">System</span>
+            <span class="tag gui">GUI</span>
+          </div>
+        </div>
+
+        <!-- Music Player -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Music-Player" class="repo-title" target="_blank">
+              music-player
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Music player with MP3 support and GUI interface" data-ru="Музыкальный плеер с поддержкой MP3 и графическим интерфейсом">
+            Music player with MP3 support and GUI interface
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag gui">GUI</span>
+            <span class="tag tool">Multimedia</span>
+          </div>
+        </div>
+
+        <!-- Parsing Web Sites -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Parsing-Web-Sites" class="repo-title" target="_blank">
+              web-parsers
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Collection of 3 data parsers from different websites" data-ru="Коллекция из 3 парсеров данных с разных веб-сайтов">
+            Collection of 3 data parsers from different websites
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag web">Web Scraping</span>
+            <span class="tag tool">Automation</span>
+          </div>
+        </div>
+
+        <!-- Geometric Figure Calculator -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Geometric-Figure-Calculator" class="repo-title" target="_blank">
+              geometry-calculator
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Program for calculating geometric figure parameters" data-ru="Программа для вычисления параметров геометрических фигур">
+            Program for calculating geometric figure parameters
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag gui">GUI</span>
+            <span class="tag tool">Mathematics</span>
+          </div>
+        </div>
+
+        <!-- Translator -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Translator" class="repo-title" target="_blank">
+              translator-tool
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Text translator from Russian to Chinese and back" data-ru="Переводчик текста с русского на китайский и обратно">
+            Text translator from Russian to Chinese and back
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag web">Translation</span>
+            <span class="tag tool">Language</span>
+          </div>
+        </div>
+
+        <!-- Slot Machine -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Slot-Machine" class="repo-title" target="_blank">
+              slot-machine
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Slot machine game with animated reels and GUI" data-ru="Игровой автомат с анимированными барабанами и графическим интерфейсом">
+            Slot machine game with animated reels and GUI
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag gui">GUI</span>
+            <span class="tag tool">Game</span>
+          </div>
+        </div>
+
+        <!-- Faker Library Russian Version -->
+        <div class="repo">
+          <div class="repo-header">
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Faker_Library_Russian_Version" class="repo-title" target="_blank">
+              faker-ru
+            </a>
+            <div class="repo-language">
+              <span class="language-color" style="background-color: #3572A5;"></span>
+              <span>Python</span>
+            </div>
+          </div>
+          <p class="repo-description" data-en="Library for generating realistic Russian test data" data-ru="Библиотека для генерации реалистичных российских тестовых данных">
+            Library for generating realistic Russian test data
+          </p>
+          <div class="tags">
+            <span class="tag python">Python</span>
+            <span class="tag tool">Testing</span>
+            <span class="tag tool">Data Generation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <div class="section-header">
+        <h2 class="section-title" data-en="Skills & Technologies" data-ru="Навыки и технологии">Skills & Technologies</h2>
+        <div class="section-subtitle" data-en="Categorized by expertise area" data-ru="Сгруппировано по областям">Categorized by expertise area</div>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Python Core -->
+        <div class="skill-category">
+          <h3><i class="fab fa-python"></i> Python Core</h3>
+          <div class="skill-items">
+            <span class="skill-item">math</span>
+            <span class="skill-item">random</span>
+            <span class="skill-item">threading</span>
+            <span class="skill-item">datetime</span>
+            <span class="skill-item">os</span>
+            <span class="skill-item">json</span>
+            <span class="skill-item">ctypes</span>
+            <span class="skill-item">webbrowser</span>
+            <span class="skill-item">enum</span>
+            <span class="skill-item">uuid</span>
+            <span class="skill-item">dataclasses</span>
+          </div>
+        </div>
+
+        <!-- Web Development -->
+        <div class="skill-category">
+          <h3><i class="fas fa-globe"></i> Web Development</h3>
+          <div class="skill-items">
+            <span class="skill-item">Django</span>
+            <span class="skill-item">requests</span>
+            <span class="skill-item">django-filter</span>
+            <span class="skill-item">HTTP</span>
+            <span class="skill-item">REST</span>
+          </div>
+        </div>
+
+        <!-- GUI Development -->
+        <div class="skill-category">
+          <h3><i class="fas fa-desktop"></i> GUI Development</h3>
+          <div class="skill-items">
+            <span class="skill-item">tkinter</span>
+            <span class="skill-item">pyautogui</span>
+          </div>
+        </div>
+
+        <!-- Security & Networking -->
+        <div class="skill-category">
+          <h3><i class="fas fa-shield-alt"></i> Security & Networking</h3>
+          <div class="skill-items">
+            <span class="skill-item">pywifi</span>
+            <span class="skill-item">keyboard</span>
+            <span class="skill-item">Faker</span>
+            <span class="skill-item">Network Analysis</span>
+          </div>
+        </div>
+
+        <!-- Databases & Data -->
+        <div class="skill-category">
+          <h3><i class="fas fa-database"></i> Databases & Data</h3>
+          <div class="skill-items">
+            <span class="skill-item">SQLite</span>
+            <span class="skill-item">PostgreSQL</span>
+            <span class="skill-item">PIL</span>
+            <span class="skill-item">JSON</span>
+            <span class="skill-item">Data Parsing</span>
+          </div>
+        </div>
+
+        <!-- System Programming -->
+        <div class="skill-category">
+          <h3><i class="fas fa-cogs"></i> System Programming</h3>
+          <div class="skill-items">
+            <span class="skill-item">psutil</span>
+            <span class="skill-item">GPUtil</span>
+            <span class="skill-item">cpuinfo</span>
+            <span class="skill-item">wmi</span>
+            <span class="skill-item">pyperclip</span>
+          </div>
+        </div>
+
+        <!-- Multimedia -->
+        <div class="skill-category">
+          <h3><i class="fas fa-music"></i> Multimedia</h3>
+          <div class="skill-items">
+            <span class="skill-item">playsound</span>
+            <span class="skill-item">gTTS</span>
+            <span class="skill-item">pydub</span>
+          </div>
+        </div>
+
+        <!-- Integrations & API -->
+        <div class="skill-category">
+          <h3><i class="fas fa-plug"></i> Integrations & API</h3>
+          <div class="skill-items">
+            <span class="skill-item">telebot</span>
+            <span class="skill-item">speedtest</span>
+            <span class="skill-item">googletrans</span>
+            <span class="skill-item">translate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="section-header">
+        <h2 class="section-title" data-en="About Me" data-ru="Обо мне">About Me</h2>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">1+</div>
+          <div class="stat-label" data-en="Years Experience" data-ru="Лет опыта">Years Experience</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">14</div>
+          <div class="stat-label" data-en="Projects" data-ru="Проектов">Projects</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">30+</div>
+          <div class="stat-label" data-en="Technologies" data-ru="Технологий">Technologies</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">8</div>
+          <div class="stat-label" data-en="Categories" data-ru="Категорий">Categories</div>
+        </div>
+      </div>
+
+      <div class="skill-category" style="margin-top: 24px;">
+        <h3><i class="fas fa-graduation-cap"></i> <span data-en="Education" data-ru="Образование">Education</span></h3>
+        <p style="color: var(--color-text-secondary); margin-top: 8px;" data-en="Studying to become an information security technician in college" data-ru="Учусь на техника по защите информации в колледже">
+          Studying to become an information security technician in college
+        </p>
+      </div>
+
+      <div class="skill-category" style="margin-top: 16px;">
+        <h3><i class="fas fa-bullseye"></i> <span data-en="Goals" data-ru="Цели">Goals</span></h3>
+        <p style="color: var(--color-text-secondary); margin-top: 8px;" data-en="Looking for interesting projects, want to find my main development stack, continue learning and growing as a developer" data-ru="Ищу интересные проекты, хочу найти основной стек разработки, продолжать учиться и расти как разработчик">
+          Looking for interesting projects, want to find my main development stack, continue learning and growing as a developer
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="current-year">2023</span> waratecs123. <span data-en="All projects for educational purposes" data-ru="Все проекты для образовательных целей">All projects for educational purposes</span></p>
+      <p style="margin-top: 8px; color: var(--color-text-tertiary);">
+        <i class="fab fa-github"></i>
+        <a href="https://github.com/waratecs123/Other-Mine-Projects" style="color: var(--color-accent); text-decoration: none;" target="_blank">
+          github.com/waratecs123
+        </a>
+      </p>
+    </div>
+  </footer>
 
   <script>
-    // Language switching functionality
+    // Language switching
     document.addEventListener('DOMContentLoaded', function() {
       const langButtons = document.querySelectorAll('.lang-btn');
       let currentLang = 'en';
 
-      // Set initial language
+      function setLanguage(lang) {
+        currentLang = lang;
+
+        // Update all elements with data attributes
+        document.querySelectorAll('[data-en], [data-ru]').forEach(element => {
+          const attr = `data-${lang}`;
+          if (element.hasAttribute(attr)) {
+            const text = element.getAttribute(attr);
+
+            // Special handling for different element types
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+              element.value = text;
+            } else if (element.hasAttribute('placeholder')) {
+              element.placeholder = text;
+            } else {
+              element.textContent = text;
+            }
+          }
+        });
+
+        // Update active button
+        langButtons.forEach(btn => {
+          if (btn.getAttribute('data-lang') === lang) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
+      }
+
+      // Initialize language
       setLanguage(currentLang);
 
       // Add click events to language buttons
@@ -640,184 +1018,52 @@
         btn.addEventListener('click', function() {
           const lang = this.getAttribute('data-lang');
           if (lang !== currentLang) {
-            currentLang = lang;
             setLanguage(lang);
-
-            // Update active button
-            langButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
           }
         });
       });
 
-      function setLanguage(lang) {
-        // Update all elements with data attributes
-        document.querySelectorAll('[data-ru], [data-en]').forEach(element => {
-          if (element.hasAttribute(`data-${lang}`)) {
-            const newText = element.getAttribute(`data-${lang}`);
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
 
-            // Handle different element types
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-              element.placeholder = newText;
-            } else if (element.hasAttribute('data-text')) {
-              element.setAttribute('data-text', newText);
-              element.textContent = newText;
-            } else {
-              element.textContent = newText;
-            }
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: 'smooth'
+            });
           }
         });
-
-        // Update HTML lang attribute
-        document.documentElement.setAttribute('lang', lang);
-
-        // Update page title
-        const titleElement = document.querySelector('.neon-title');
-        if (titleElement) {
-          document.title = `// ${titleElement.textContent} | CAPTCHA`;
-        }
-      }
-    });
-
-    // Matrix background effect
-    const canvas = document.createElement('canvas');
-    canvas.className = 'matrix-bg';
-    document.body.prepend(canvas);
-    const ctx = canvas.getContext('2d');
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const chars = "01010101010101010101010101010101 CAPTCHA CAPTCHA 01010101";
-    const charArray = chars.split("");
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = [];
-
-    for(let i = 0; i < columns; i++) {
-      drops[i] = 1;
-    }
-
-    function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#0F0";
-      ctx.font = fontSize + "px VT323";
-
-      for(let i = 0; i < drops.length; i++) {
-        const text = charArray[Math.floor(Math.random() * charArray.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-
-        drops[i]++;
-      }
-    }
-
-    setInterval(drawMatrix, 35);
-
-    // CAPTCHA functionality
-    let captchaText = '';
-    let redirectTimer = null;
-
-    function generateCaptcha() {
-      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
-      let result = '';
-      for (let i = 0; i < 6; i++) {
-        result += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      captchaText = result;
-
-      const captchaImage = document.getElementById('captchaImage');
-      captchaImage.textContent = result;
-
-      // Add some visual distortion
-      captchaImage.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
-      captchaImage.style.background = `linear-gradient(45deg,
-        hsl(${Math.random() * 360}, 100%, 50%),
-        hsl(${Math.random() * 360}, 100%, 50%))`;
-    }
-
-    function startRedirectCountdown() {
-      const redirectTimerElement = document.getElementById('redirectTimer');
-      const countdownElement = document.getElementById('countdown');
-
-      redirectTimerElement.style.display = 'block';
-
-      let countdown = 3;
-      countdownElement.textContent = countdown;
-
-      redirectTimer = setInterval(() => {
-        countdown--;
-        countdownElement.textContent = countdown;
-
-        if (countdown <= 0) {
-          clearInterval(redirectTimer);
-          window.location.href = 'main.html';
-        }
-      }, 1000);
-    }
-
-    function verifyCaptcha() {
-      const userInput = document.getElementById('captchaInput').value;
-      const successMessage = document.getElementById('successMessage');
-      const errorMessage = document.getElementById('errorMessage');
-
-      // Hide both messages first
-      successMessage.style.display = 'none';
-      errorMessage.style.display = 'none';
-
-      // Hide redirect timer if it's visible
-      document.getElementById('redirectTimer').style.display = 'none';
-
-      // Clear any existing redirect timer
-      if (redirectTimer) {
-        clearInterval(redirectTimer);
-        redirectTimer = null;
-      }
-
-      if (userInput.toUpperCase() === captchaText.toUpperCase()) {
-        successMessage.style.display = 'block';
-
-        // Disable inputs after successful verification
-        document.getElementById('captchaInput').disabled = true;
-        document.getElementById('refreshCaptcha').disabled = true;
-        document.getElementById('submitCaptcha').disabled = true;
-
-        // Start countdown for redirect
-        startRedirectCountdown();
-      } else {
-        errorMessage.style.display = 'block';
-        setTimeout(() => {
-          errorMessage.style.display = 'none';
-        }, 3000);
-        generateCaptcha();
-        document.getElementById('captchaInput').value = '';
-      }
-    }
-
-    // Initialize CAPTCHA
-    document.addEventListener('DOMContentLoaded', function() {
-      generateCaptcha();
-
-      document.getElementById('refreshCaptcha').addEventListener('click', generateCaptcha);
-      document.getElementById('submitCaptcha').addEventListener('click', verifyCaptcha);
-
-      // Allow Enter key to submit
-      document.getElementById('captchaInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          verifyCaptcha();
-        }
       });
-    });
 
-    // Resize canvas on window resize
-    window.addEventListener('resize', function() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      // Staggered animation for repositories
+      const repos = document.querySelectorAll('.repo');
+      repos.forEach((repo, index) => {
+        repo.style.animationDelay = `${index * 0.05}s`;
+      });
+
+      // Update year in footer
+      const yearElement = document.getElementById('current-year');
+      if (yearElement) {
+        const currentYear = new Date().getFullYear();
+        yearElement.textContent = currentYear;
+      }
+
+      // GitHub-like hover effects
+      document.querySelectorAll('.repo').forEach(repo => {
+        repo.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-4px)';
+        });
+
+        repo.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
     });
   </script>
 </body>
