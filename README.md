@@ -1,5 +1,10 @@
+<div align="center">
+  <img src="other_files/website_2.png" alt="Other-Mine-Projects Website Screenshot" width="1000">
+</div>
+
 ## Other-Mine-Projects
-### https://other-mine-projects.pages.dev/
+### [>> Website <<](https://other-mine-projects.pages.dev/)
+### [>> Website (Alternative Link) <<](https://waratecs123.github.io/Other-Mine-Projects/)
 
 This repository contains a collection of Python applications and utilities developed to demonstrate various programming paradigms, algorithmic solutions, and software development practices. The projects included here are not basic in nature, despite their relatively small size, and serve as an educational resource and code library for computational problems and interactive applications.
 
