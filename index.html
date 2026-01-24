@@ -43,7 +43,7 @@
       padding: 0 20px;
     }
 
-    /* Header */
+    /* Упрощенный Header */
     .header {
       background-color: var(--color-bg-secondary);
       border-bottom: 1px solid var(--color-border-primary);
@@ -73,25 +73,6 @@
 
     .logo:hover {
       color: var(--color-accent);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .nav-link {
-      color: var(--color-text-secondary);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 4px 8px;
-    }
-
-    .nav-link:hover {
-      color: var(--color-text-primary);
     }
 
     /* Language Switcher */
@@ -534,12 +515,6 @@
         gap: 16px;
       }
 
-      .nav {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 12px;
-      }
-
       .language-switcher {
         align-self: flex-start;
       }
@@ -607,16 +582,6 @@
     }
 
     @media (max-width: 480px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-
-      .nav-link {
-        padding: 6px 0;
-      }
-
       .user-info h1 {
         font-size: 24px;
       }
@@ -635,6 +600,16 @@
 
       .project-link {
         justify-content: center;
+      }
+      
+      .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .language-switcher {
+        margin-top: 0;
       }
     }
 
@@ -663,20 +638,13 @@
   </script>
 </head>
 <body>
-  <!-- Header -->
+  <!-- Упрощенный Header -->
   <header class="header">
     <div class="container header-container">
       <a href="#" class="logo">
         <i class="fab fa-github"></i>
         <span class="username-text">waratecs123</span>
       </a>
-
-      <div class="nav">
-        <a href="#repositories" class="nav-link" data-en="Repositories" data-ru="Репозитории">Repositories</a>
-        <a href="#projects" class="nav-link" data-en="Projects" data-ru="Проекты">Projects</a>
-        <a href="#skills" class="nav-link" data-en="Skills" data-ru="Навыки">Skills</a>
-        <a href="#about" class="nav-link" data-en="About" data-ru="Обо мне">About</a>
-      </div>
 
       <div class="language-switcher">
         <button class="lang-btn active" data-lang="en">EN</button>
@@ -1326,24 +1294,6 @@
           const lang = this.getAttribute('data-lang');
           if (lang !== currentLang) {
             setLanguage(lang);
-          }
-        });
-      });
-
-      // Smooth scroll for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 100,
-              behavior: 'smooth'
-            });
           }
         });
       });
