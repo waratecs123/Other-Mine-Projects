@@ -2,11 +2,11 @@
   <img src="other_files/Logo_3.png" alt="Other-Mine-Projects Website Screenshot" width="1000">
 </div>
 
-## Other-Mine-Projects
-
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Developer](https://img.shields.io/badge/Dev-waratecs123-blue.svg)
 ![Status](https://img.shields.io/badge/Maintained-When%20time%20permits-blue.svg)
+
+## Other-Mine-Projects
 
 ### [>> Website <<](https://other-mine-projects.pages.dev/)
 ### [>> Website (Alternative Link) <<](https://waratecs123.github.io/Other-Mine-Projects/)
@@ -21,25 +21,25 @@ This repository contains a collection of Python applications and utilities devel
 
 ### Projects
 
-1. *Advanced Casino Slot Machine System* (slot_machine.py)  
-   A casino-style slot machine simulation featuring real-time animation, multi-tiered symbols, dynamic jackpots, theme management, game state persistence, and statistical analytics. Implemented using object-oriented architecture with tkinter for the graphical user interface.
+1. **Advanced Casino Slot Machine System (slot_machine.py).**
+A casino-style slot machine simulation featuring real-time animation, multi-tiered symbols, dynamic jackpots, theme management, game state persistence, and statistical analytics. Implemented using object-oriented architecture with tkinter for the graphical user interface.
 
-2. *Professional Translation Application* (TRANSLATER.py)  
-   A bilingual translation platform supporting Russian-Chinese translations with bidirectional functionality, speech synthesis, clipboard management, bulk text processing, and audio export. Utilizes modular design and asynchronous processing.
+2. **Professional Translation Application (TRANSLATER.py).** 
+A bilingual translation platform supporting Russian-Chinese translations with bidirectional functionality, speech synthesis, clipboard management, bulk text processing, and audio export. Utilizes modular design and asynchronous processing.
 
-3. *Algorithmic Problem Suite* (Basic tasks.py, Basic tasks.txt)  
+3. **Algorithmic Problem Suite (Basic tasks.py, Basic tasks.txt).**  
    A suite of 30 fundamental programming challenges covering mathematical computations, string processing, data structure operations, and algorithmic tasks such as prime detection, palindrome verification, and sorting implementations.
 
-4. *Geometric Computation Library* (class_objects.py)  
+4. **Geometric Computation Library (class_objects.py).**
    A library for calculating properties of geometric shapes, including circles, polygons, triangles, quadrilaterals, and ellipses. Features input validation, inheritance-based hierarchy, and precise computations using the math library.
 
-5. *System Monitoring Application* (monitoring_app_system.py)  
+5. **System Monitoring Application (monitoring_app_system.py).** 
    A diagnostic tool for monitoring hardware components, including CPU, memory, GPU, storage, and system information. Employs multi-threaded data collection and real-time refresh capabilities.
 
-6. *Intelligent Assistant Framework* (assistant.py, data.py)  
+6. **Intelligent Assistant Framework (assistant.py, data.py).** 
    A command-based assistant system with modules for system operations, computational tools, entertainment features, and productivity utilities. Supports plugin extensions and graphical user interface with command history.
 
-7. *And many other projects (see the repository files)*
+7. **And many other projects (see the repository files)**
 
 ### Technical Specifications
 
