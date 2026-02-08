@@ -74,3 +74,8 @@ Refer to individual source files for detailed comments and usage instructions.
 ### License
 
 This repository is licensed under the MIT License. See the LICENSE file for details.
+
+
+<div align="center">
+  <img src="other_files/ai.jpg" alt="Other Mine Projects Screenshot" width="500">
+</div>
