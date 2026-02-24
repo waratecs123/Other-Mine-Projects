@@ -1,0 +1,10 @@
+{
+    "GENDER": ["мужской", "женский"],
+    "TYPE_BUILDINGS": ["д.", "кв."],
+    "WEIGHT_FACTORS_1": [7, 2, 4, 10, 3, 5, 9, 4, 6, 8],
+    "WEIGHT_FACTORS_2": [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8],
+    "COUNTRY_CODE": "+7",
+    "PREFIX": "2200",
+    "LEVEL_WORK": ["Нет опыта", "Intern", "Junior", "Middle", "Senior", "Team Lead"],
+    "N_A": "Нет данных"
+}
