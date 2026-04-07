@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>waratecs123 | GitHub</title>
+  <title>waratecs123 | GitHub Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* GitHub-like стили */
+    /* GitHub-inspired dark theme */
     :root {
       --color-bg-canvas: #0d1117;
       --color-bg-primary: #0d1117;
@@ -43,7 +43,7 @@
       padding: 0 20px;
     }
 
-    /* Упрощенный Header */
+    /* Header styling */
     .header {
       background-color: var(--color-bg-secondary);
       border-bottom: 1px solid var(--color-border-primary);
@@ -109,7 +109,7 @@
       font-weight: 500;
     }
 
-    /* User Profile */
+    /* User Profile Section */
     .user-profile {
       display: flex;
       align-items: center;
@@ -124,22 +124,6 @@
       width: 120px;
       height: 120px;
       flex-shrink: 0;
-    }
-
-    .avatar {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      border: 2px solid var(--color-border-primary);
-      object-fit: cover;
-      background-color: var(--color-bg-tertiary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-text-secondary);
-      font-size: 14px;
-      text-align: center;
-      padding: 10px;
     }
 
     .avatar-placeholder {
@@ -199,16 +183,16 @@
       font-weight: 600;
     }
 
-    /* GitHub-like sections */
+    /* Section styling */
     .section {
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     .section-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
+      align-items: baseline;
+      margin-bottom: 20px;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--color-border-primary);
       flex-wrap: wrap;
@@ -220,25 +204,33 @@
       font-weight: 600;
     }
 
-    /* Repositories */
+    .section-subtitle {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+    }
+
+    /* Repository Cards Grid */
     .repositories {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 16px;
+      gap: 20px;
     }
 
     .repo {
       background-color: var(--color-bg-secondary);
       border: 1px solid var(--color-border-primary);
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 20px;
-      transition: all 0.2s;
+      transition: all 0.25s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .repo:hover {
       border-color: var(--color-accent);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
     .repo-header {
@@ -246,6 +238,8 @@
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
     .repo-title {
@@ -264,6 +258,8 @@
       color: var(--color-text-secondary);
       margin-bottom: 16px;
       font-size: 14px;
+      line-height: 1.5;
+      flex-grow: 1;
     }
 
     .repo-meta {
@@ -271,37 +267,38 @@
       gap: 16px;
       font-size: 12px;
       color: var(--color-text-tertiary);
+      margin-top: 8px;
     }
 
     .repo-language {
       display: flex;
       align-items: center;
-      gap: 4px;
-      flex-shrink: 0;
+      gap: 6px;
     }
 
     .language-color {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background-color: var(--color-accent);
+      background-color: #3572A5;
     }
 
-    /* Tags */
+    /* Tags styling */
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 8px;
+      margin-top: 12px;
     }
 
     .tag {
       background-color: var(--color-bg-tertiary);
       color: var(--color-text-secondary);
-      padding: 2px 8px;
-      border-radius: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
       font-size: 11px;
       font-weight: 500;
+      letter-spacing: 0.3px;
     }
 
     .tag.python {
@@ -330,7 +327,7 @@
     }
 
     .tag.tool {
-      background-color: #555555;
+      background-color: #6e40c9;
       color: white;
     }
 
@@ -342,165 +339,92 @@
     /* Skills Grid */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
     }
 
     .skill-category {
       background-color: var(--color-bg-secondary);
       border: 1px solid var(--color-border-primary);
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 20px;
+      transition: transform 0.2s;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-accent);
     }
 
     .skill-category h3 {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      color: var(--color-accent);
     }
 
     .skill-items {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
     }
 
     .skill-item {
       background-color: var(--color-bg-tertiary);
       color: var(--color-text-secondary);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    /* Projects Section */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .project-card {
-      background-color: var(--color-bg-secondary);
-      border: 1px solid var(--color-border-primary);
-      border-radius: 8px;
-      padding: 24px;
-      transition: all 0.2s;
-    }
-
-    .project-card:hover {
-      border-color: var(--color-accent);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    }
-
-    .project-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .project-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      background-color: var(--color-bg-tertiary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      color: var(--color-accent);
-      flex-shrink: 0;
-    }
-
-    .project-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--color-text-primary);
-    }
-
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background-color: var(--color-bg-tertiary);
-      color: var(--color-text-primary);
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 14px;
+      padding: 5px 14px;
+      border-radius: 24px;
+      font-size: 13px;
       font-weight: 500;
       transition: all 0.2s;
     }
 
-    .project-link:hover {
+    .skill-item:hover {
       background-color: var(--color-accent);
       color: white;
-      transform: translateY(-2px);
     }
 
-    .project-link i {
-      font-size: 16px;
-    }
-
-    .feature-list {
-      margin: 16px 0;
-      padding-left: 20px;
-    }
-
-    .feature-list li {
-      margin-bottom: 8px;
-      color: var(--color-text-secondary);
-      font-size: 14px;
-    }
-
-    /* Stats Grid */
+    /* Stats Cards */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
     }
 
     .stat-card {
       background-color: var(--color-bg-secondary);
       border: 1px solid var(--color-border-primary);
-      border-radius: 6px;
-      padding: 20px;
+      border-radius: 8px;
+      padding: 24px 16px;
       text-align: center;
-      transition: transform 0.2s;
+      transition: all 0.2s;
     }
 
     .stat-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      border-color: var(--color-accent);
     }
 
     .stat-number {
-      font-size: 32px;
-      font-weight: 600;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--color-accent);
       margin-bottom: 8px;
     }
 
     .stat-label {
       color: var(--color-text-secondary);
       font-size: 14px;
+      font-weight: 500;
     }
 
     /* Footer */
     .footer {
-      margin-top: 48px;
+      margin-top: 56px;
       padding: 32px 0;
       border-top: 1px solid var(--color-border-primary);
       text-align: center;
@@ -508,16 +432,41 @@
       font-size: 14px;
     }
 
-    /* Responsive */
+    .footer a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .repo, .skill-category, .stat-card {
+      animation: fadeInUp 0.35s ease forwards;
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
       .container {
-        padding: 0 15px;
+        padding: 0 16px;
       }
 
       .header-container {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
+        gap: 12px;
       }
 
       .language-switcher {
@@ -533,6 +482,7 @@
       .avatar-container {
         width: 100px;
         height: 100px;
+        margin: 0 auto;
       }
 
       .user-info h1 {
@@ -555,95 +505,38 @@
         grid-template-columns: 1fr;
       }
 
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .repo-header {
-        flex-direction: column;
-        gap: 8px;
-      }
-
       .section-header {
         flex-direction: column;
         align-items: flex-start;
       }
 
-      .section-title {
-        font-size: 22px;
-      }
-
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .stat-card {
-        padding: 16px;
-      }
-
-      .stat-number {
-        font-size: 28px;
       }
     }
 
     @media (max-width: 480px) {
-      .user-info h1 {
-        font-size: 24px;
-      }
-
-      .section-title {
-        font-size: 20px;
-      }
-
       .stats-grid {
         grid-template-columns: 1fr;
       }
 
-      .project-links {
-        flex-direction: column;
+      .stat-number {
+        font-size: 30px;
       }
 
-      .project-link {
-        justify-content: center;
+      .section-title {
+        font-size: 22px;
       }
-      
-      .header-container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-      
-      .language-switcher {
-        margin-top: 0;
-      }
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .repo, .project-card {
-      animation: fadeIn 0.3s ease-out;
     }
   </style>
 </head>
 <body>
-  <!-- Упрощенный Header -->
   <header class="header">
     <div class="container header-container">
       <a href="#" class="logo">
         <i class="fab fa-github"></i>
-        <span class="username-text">waratecs123</span>
+        <span>waratecs123</span>
       </a>
-
       <div class="language-switcher">
         <button class="lang-btn active" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="ru">RU</button>
@@ -652,30 +545,33 @@
   </header>
 
   <main class="container">
-    <!-- User Profile -->
+    <!-- User Profile Section -->
     <section class="user-profile">
       <div class="avatar-container">
         <div class="avatar-placeholder">
-          <i class="fas fa-user-circle"></i>
-          <span data-en="Avatar not found" data-ru="Аватар не найден">Avatar not found</span>
+          <i class="fas fa-user-astronaut"></i>
+          <span data-en="waratecs123" data-ru="waratecs123">waratecs123</span>
         </div>
       </div>
       <div class="user-info">
         <h1 data-en="Strange Developer" data-ru="Странный Разработчик">Strange Developer</h1>
         <div class="username">waratecs123</div>
-        <div class="user-bio" data-en="Python developer with 1 year of experience. Love to experiment with different libraries and frameworks. Currently studying information security." data-ru="Python разработчик с 1 годом опыта. Люблю экспериментировать с различными библиотеками и фреймворками. В настоящее время изучаю информационную безопасность.">
-          Python developer with 1 year of experience. Love to experiment with different libraries and frameworks. Currently studying information security.
+        <div class="user-bio" data-en="Python developer with 1+ years of hands-on experience. Passionate about cybersecurity, automation, and building practical tools. Currently studying information security and exploring new technologies." data-ru="Python разработчик с опытом более 1 года. Увлекаюсь кибербезопасностью, автоматизацией и созданием практичных инструментов. В настоящее время изучаю информационную безопасность и осваиваю новые технологии.">
+          Python developer with 1+ years of hands-on experience. Passionate about cybersecurity, automation, and building practical tools. Currently studying information security and exploring new technologies.
         </div>
         <div class="user-stats">
           <div class="stat">
+            <i class="fas fa-code-branch"></i>
             <span class="stat-count">15</span>
             <span data-en="repositories" data-ru="репозиториев">repositories</span>
           </div>
           <div class="stat">
+            <i class="fas fa-microchip"></i>
             <span class="stat-count">30+</span>
             <span data-en="technologies" data-ru="технологий">technologies</span>
           </div>
           <div class="stat">
+            <i class="fas fa-chart-line"></i>
             <span class="stat-count">1</span>
             <span data-en="year experience" data-ru="год опыта">year experience</span>
           </div>
@@ -683,104 +579,86 @@
       </div>
     </section>
 
-    <!-- Projects & Links Section -->
-    <section id="projects" class="section">
-      <div class="section-header">
-        <h2 class="section-title" data-en="Projects & Links" data-ru="Проекты и ссылки">Projects & Links</h2>
-        <div class="section-subtitle" data-en="Official Möbius team links and projects" data-ru="Официальные ссылки команды Möbius и проекты">Official Möbius team links and projects</div>
-      </div>
-
-      <div class="projects-grid">
-    <!-- Repositories Section -->
+    <!-- Public Repositories Section -->
     <section id="repositories" class="section">
       <div class="section-header">
         <h2 class="section-title" data-en="Public repositories" data-ru="Публичные репозитории">Public repositories</h2>
-        <div class="section-subtitle" data-en="Sorted by update date" data-ru="Отсортировано по дате обновления">Sorted by update date</div>
+        <div class="section-subtitle" data-en="Featured projects & experimental tools" data-ru="Избранные проекты и экспериментальные инструменты">Featured projects & experimental tools</div>
       </div>
 
       <div class="repositories">
         <!-- Fuck-Pass Password Manager -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Fuck-Pass" class="repo-title" target="_blank">
-              fuck-pass
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Fuck-Pass" class="repo-title" target="_blank">fuck-pass</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #3572A5;"></span>
               <span>Python</span>
             </div>
           </div>
-          <p class="repo-description" data-en="Advanced password generator & security analyzer with 4 generation algorithms, security checking and leak detection" data-ru="Продвинутый генератор паролей и анализатор безопасности с 4 алгоритмами генерации, проверкой безопасности и обнаружением утечек">
-            Advanced password generator & security analyzer with 4 generation algorithms, security checking and leak detection
+          <p class="repo-description" data-en="Advanced password generator & security analyzer with 4 generation algorithms, strength checking, and breach detection." data-ru="Продвинутый генератор паролей и анализатор безопасности с 4 алгоритмами генерации, проверкой надежности и обнаружением утечек.">
+            Advanced password generator & security analyzer with 4 generation algorithms, strength checking, and breach detection.
           </p>
           <div class="tags">
             <span class="tag python">Python</span>
             <span class="tag security">Security</span>
-            <span class="tag tool">CLI</span>
-            <span class="tag tool">Automation</span>
+            <span class="tag tool">CLI Tool</span>
           </div>
         </div>
 
         <!-- Cantor Monitor -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Cantor-Monitor" class="repo-title" target="_blank">
-              cantor-monitor
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Cantor-Monitor" class="repo-title" target="_blank">cantor-monitor</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #3572A5;"></span>
               <span>Python</span>
             </div>
           </div>
-          <p class="repo-description" data-en="System monitoring tool for CPU and GPU analysis with detailed hardware tracking and performance metrics" data-ru="Инструмент мониторинга системы для анализа CPU и GPU с детальным отслеживанием аппаратного обеспечения и метриками производительности">
-            System monitoring tool for CPU and GPU analysis with detailed hardware tracking and performance metrics
+          <p class="repo-description" data-en="Comprehensive system monitoring tool for CPU & GPU analysis with real-time hardware tracking and performance metrics." data-ru="Комплексный инструмент мониторинга системы для анализа CPU и GPU с отслеживанием оборудования в реальном времени и метриками производительности.">
+            Comprehensive system monitoring tool for CPU & GPU analysis with real-time hardware tracking and performance metrics.
           </p>
           <div class="tags">
             <span class="tag python">Python</span>
             <span class="tag monitoring">Monitoring</span>
             <span class="tag tool">System</span>
-            <span class="tag tool">Hardware</span>
           </div>
         </div>
 
         <!-- Proxy Checker -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Action-On-Ip-Addresses/proxy_check" class="repo-title" target="_blank">
-              proxy-checker
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Action-On-Ip-Addresses/proxy_check" class="repo-title" target="_blank">proxy-checker</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #3572A5;"></span>
               <span>Python</span>
             </div>
           </div>
-          <p class="repo-description" data-en="Program that collects proxies from different sources and checks their functionality" data-ru="Программа, которая собирает proxy с разных источников и проверяет их работоспособность">
-            Program that collects proxies from different sources and checks their functionality
+          <p class="repo-description" data-en="Multi-source proxy collector and validator that tests proxy reliability and anonymity levels." data-ru="Многофункциональный сборщик и валидатор прокси, который тестирует надежность и уровни анонимности прокси.">
+            Multi-source proxy collector and validator that tests proxy reliability and anonymity levels.
           </p>
           <div class="tags">
             <span class="tag python">Python</span>
             <span class="tag tool">Networking</span>
-            <span class="tag tool">Automation</span>
+            <span class="tag security">Security</span>
           </div>
         </div>
 
-        <!-- Django Projects -->
+        <!-- Django Projects Collection -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Django-Projects" class="repo-title" target="_blank">
-              django-projects
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Django-Projects" class="repo-title" target="_blank">django-projects</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #092e20;"></span>
               <span>Django</span>
             </div>
           </div>
-          <p class="repo-description" data-en="Collection of 8 Django projects on various topics" data-ru="Коллекция из 8 Django проектов на различные темы">
-            Collection of 8 Django projects on various topics
+          <p class="repo-description" data-en="Collection of 8 full-stack Django applications covering authentication, REST APIs, admin panels, and more." data-ru="Коллекция из 8 полноценных Django-приложений, охватывающих аутентификацию, REST API, админ-панели и другое.">
+            Collection of 8 full-stack Django applications covering authentication, REST APIs, admin panels, and more.
           </p>
           <div class="tags">
             <span class="tag django">Django</span>
-            <span class="tag web">Web Development</span>
+            <span class="tag web">Web Dev</span>
             <span class="tag python">Python</span>
           </div>
         </div>
@@ -788,58 +666,52 @@
         <!-- IP Address Analyzer -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Action-On-Ip-Addresses/ip_address_checker" class="repo-title" target="_blank">
-              ip-analyzer
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Action-On-Ip-Addresses/ip_address_checker" class="repo-title" target="_blank">ip-analyzer</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #3572A5;"></span>
               <span>Python</span>
             </div>
           </div>
-          <p class="repo-description" data-en="Program that analyzes IP addresses like a detective" data-ru="Программа, которая анализирует IP-адреса как детектив">
-            Program that analyzes IP addresses like a detective
+          <p class="repo-description" data-en="Detective-style IP address analyzer providing geolocation, ISP data, and threat intelligence." data-ru="IP-анализатор в стиле детектива, предоставляющий геолокацию, данные провайдера и разведку угроз.">
+            Detective-style IP address analyzer providing geolocation, ISP data, and threat intelligence.
           </p>
           <div class="tags">
             <span class="tag python">Python</span>
-            <span class="tag security">Security</span>
+            <span class="tag security">OSINT</span>
             <span class="tag tool">Networking</span>
           </div>
         </div>
 
-        <!-- Ultimate Security Multi-Tool Suite -->
+        <!-- Ultimate Security Toolkit -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Ultimate-Security-Multi-Tool-Suite" class="repo-title" target="_blank">
-              security-toolkit
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Ultimate-Security-Multi-Tool-Suite" class="repo-title" target="_blank">security-toolkit</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #3572A5;"></span>
               <span>Python</span>
             </div>
           </div>
-          <p class="repo-description" data-en="Multifunctional security toolset for educational purposes" data-ru="Многофункциональный набор инструментов безопасности для образовательных целей">
-            Multifunctional security toolset for educational purposes
+          <p class="repo-description" data-en="Multifunctional security toolkit for educational purposes including encryption, hashing, and network utilities." data-ru="Многофункциональный набор инструментов безопасности для образовательных целей, включая шифрование, хеширование и сетевые утилиты.">
+            Multifunctional security toolkit for educational purposes including encryption, hashing, and network utilities.
           </p>
           <div class="tags">
             <span class="tag python">Python</span>
-            <span class="tag security">Security</span>
-            <span class="tag tool">Tools</span>
+            <span class="tag security">CyberSecurity</span>
+            <span class="tag tool">Toolkit</span>
           </div>
         </div>
 
         <!-- Holy Cow Validation Library -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Holy-Cow" class="repo-title" target="_blank">
-              holy-cow-validation
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Holy-Cow" class="repo-title" target="_blank">holy-cow-validation</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #3572A5;"></span>
               <span>Python</span>
             </div>
           </div>
-          <p class="repo-description" data-en="Own validation library with 30+ validators" data-ru="Собственная библиотека валидации с 30+ валидаторами">
-            Own validation library with 30+ validators
+          <p class="repo-description" data-en="Custom validation library featuring 30+ validators for emails, passwords, data types, and custom rules." data-ru="Собственная библиотека валидации, включающая 30+ валидаторов для email, паролей, типов данных и пользовательских правил.">
+            Custom validation library featuring 30+ validators for emails, passwords, data types, and custom rules.
           </p>
           <div class="tags">
             <span class="tag python">Python</span>
@@ -848,19 +720,17 @@
           </div>
         </div>
 
-        <!-- Telegram Bots -->
+        <!-- Telegram Bots Collection -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Simple-Telegram-Bots" class="repo-title" target="_blank">
-              telegram-bots
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Simple-Telegram-Bots" class="repo-title" target="_blank">telegram-bots</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #3572A5;"></span>
               <span>Python</span>
             </div>
           </div>
-          <p class="repo-description" data-en="Collection of Telegram bots including OSINT bot" data-ru="Коллекция Telegram ботов, включая OSINT бота">
-            Collection of Telegram bots including OSINT bot
+          <p class="repo-description" data-en="Collection of interactive Telegram bots including OSINT bot, utility bots, and automation scripts." data-ru="Коллекция интерактивных Telegram ботов, включая OSINT бота, утилиты и скрипты автоматизации.">
+            Collection of interactive Telegram bots including OSINT bot, utility bots, and automation scripts.
           </p>
           <div class="tags">
             <span class="tag python">Python</span>
@@ -869,40 +739,36 @@
           </div>
         </div>
 
-        <!-- Monitoring OS -->
+        <!-- System Monitor GUI -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Monitoring-Os" class="repo-title" target="_blank">
-              system-monitor
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Monitoring-Os" class="repo-title" target="_blank">system-monitor</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #3572A5;"></span>
               <span>Python</span>
             </div>
           </div>
-          <p class="repo-description" data-en="System monitoring program for hardware tracking" data-ru="Программа мониторинга системы для отслеживания аппаратного обеспечения">
-            System monitoring program for hardware tracking
+          <p class="repo-description" data-en="Desktop system monitor with real-time graphs, process management, and hardware temperature tracking." data-ru="Десктопный системный монитор с графиками в реальном времени, управлением процессами и отслеживанием температуры оборудования.">
+            Desktop system monitor with real-time graphs, process management, and hardware temperature tracking.
           </p>
           <div class="tags">
             <span class="tag python">Python</span>
-            <span class="tag tool">System</span>
             <span class="tag gui">GUI</span>
+            <span class="tag monitoring">Performance</span>
           </div>
         </div>
 
         <!-- Music Player -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Music-Player" class="repo-title" target="_blank">
-              music-player
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Music-Player" class="repo-title" target="_blank">music-player</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #3572A5;"></span>
               <span>Python</span>
             </div>
           </div>
-          <p class="repo-description" data-en="Music player with MP3 support and GUI interface" data-ru="Музыкальный плеер с поддержкой MP3 и графическим интерфейсом">
-            Music player with MP3 support and GUI interface
+          <p class="repo-description" data-en="Feature-rich music player with playlist support, MP3 playback, and modern GUI interface." data-ru="Многофункциональный музыкальный плеер с поддержкой плейлистов, воспроизведением MP3 и современным графическим интерфейсом.">
+            Feature-rich music player with playlist support, MP3 playback, and modern GUI interface.
           </p>
           <div class="tags">
             <span class="tag python">Python</span>
@@ -911,19 +777,17 @@
           </div>
         </div>
 
-        <!-- Parsing Web Sites -->
+        <!-- Web Parsers -->
         <div class="repo">
           <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Parsing-Web-Sites" class="repo-title" target="_blank">
-              web-parsers
-            </a>
+            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Parsing-Web-Sites" class="repo-title" target="_blank">web-parsers</a>
             <div class="repo-language">
               <span class="language-color" style="background-color: #3572A5;"></span>
               <span>Python</span>
             </div>
           </div>
-          <p class="repo-description" data-en="Collection of 3 data parsers from different websites" data-ru="Коллекция из 3 парсеров данных с разных веб-сайтов">
-            Collection of 3 data parsers from different websites
+          <p class="repo-description" data-en="Collection of 3 powerful web scrapers for extracting structured data from various websites." data-ru="Коллекция из 3 мощных веб-парсеров для извлечения структурированных данных с различных веб-сайтов.">
+            Collection of 3 powerful web scrapers for extracting structured data from various websites.
           </p>
           <div class="tags">
             <span class="tag python">Python</span>
@@ -931,238 +795,113 @@
             <span class="tag tool">Automation</span>
           </div>
         </div>
-
-        <!-- Geometric Figure Calculator -->
-        <div class="repo">
-          <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Geometric-Figure-Calculator" class="repo-title" target="_blank">
-              geometry-calculator
-            </a>
-            <div class="repo-language">
-              <span class="language-color" style="background-color: #3572A5;"></span>
-              <span>Python</span>
-            </div>
-          </div>
-          <p class="repo-description" data-en="Program for calculating geometric figure parameters" data-ru="Программа для вычисления параметров геометрических фигур">
-            Program for calculating geometric figure parameters
-          </p>
-          <div class="tags">
-            <span class="tag python">Python</span>
-            <span class="tag gui">GUI</span>
-            <span class="tag tool">Mathematics</span>
-          </div>
-        </div>
-
-        <!-- Translator -->
-        <div class="repo">
-          <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Translator" class="repo-title" target="_blank">
-              translator-tool
-            </a>
-            <div class="repo-language">
-              <span class="language-color" style="background-color: #3572A5;"></span>
-              <span>Python</span>
-            </div>
-          </div>
-          <p class="repo-description" data-en="Text translator from Russian to Chinese and back" data-ru="Переводчик текста с русского на китайский и обратно">
-            Text translator from Russian to Chinese and back
-          </p>
-          <div class="tags">
-            <span class="tag python">Python</span>
-            <span class="tag web">Translation</span>
-            <span class="tag tool">Language</span>
-          </div>
-        </div>
-
-        <!-- Slot Machine -->
-        <div class="repo">
-          <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Slot-Machine" class="repo-title" target="_blank">
-              slot-machine
-            </a>
-            <div class="repo-language">
-              <span class="language-color" style="background-color: #3572A5;"></span>
-              <span>Python</span>
-            </div>
-          </div>
-          <p class="repo-description" data-en="Slot machine game with animated reels and GUI" data-ru="Игровой автомат с анимированными барабанами и графическим интерфейсом">
-            Slot machine game with animated reels and GUI
-          </p>
-          <div class="tags">
-            <span class="tag python">Python</span>
-            <span class="tag gui">GUI</span>
-            <span class="tag tool">Game</span>
-          </div>
-        </div>
-
-        <!-- Faker Library Russian Version -->
-        <div class="repo">
-          <div class="repo-header">
-            <a href="https://github.com/waratecs123/Other-Mine-Projects/tree/main/Faker_Library_Russian_Version" class="repo-title" target="_blank">
-              faker-ru
-            </a>
-            <div class="repo-language">
-              <span class="language-color" style="background-color: #3572A5;"></span>
-              <span>Python</span>
-            </div>
-          </div>
-          <p class="repo-description" data-en="Library for generating realistic Russian test data" data-ru="Библиотека для генерации реалистичных российских тестовых данных">
-            Library for generating realistic Russian test data
-          </p>
-          <div class="tags">
-            <span class="tag python">Python</span>
-            <span class="tag tool">Testing</span>
-            <span class="tag tool">Data Generation</span>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills & Technologies Section -->
     <section id="skills" class="section">
       <div class="section-header">
         <h2 class="section-title" data-en="Skills & Technologies" data-ru="Навыки и технологии">Skills & Technologies</h2>
-        <div class="section-subtitle" data-en="Categorized by expertise area" data-ru="Сгруппировано по областям">Categorized by expertise area</div>
+        <div class="section-subtitle" data-en="Categorized by domain" data-ru="Сгруппировано по областям">Categorized by domain</div>
       </div>
 
       <div class="skills-grid">
-        <!-- Python Core -->
         <div class="skill-category">
           <h3><i class="fab fa-python"></i> Python Core</h3>
           <div class="skill-items">
-            <span class="skill-item">math</span>
-            <span class="skill-item">random</span>
+            <span class="skill-item">math, random</span>
             <span class="skill-item">threading</span>
-            <span class="skill-item">datetime</span>
-            <span class="skill-item">os</span>
-            <span class="skill-item">json</span>
-            <span class="skill-item">ctypes</span>
-            <span class="skill-item">webbrowser</span>
-            <span class="skill-item">enum</span>
-            <span class="skill-item">uuid</span>
-            <span class="skill-item">dataclasses</span>
+            <span class="skill-item">datetime, os</span>
+            <span class="skill-item">json, enum</span>
+            <span class="skill-item">uuid, dataclasses</span>
+            <span class="skill-item">ctypes, webbrowser</span>
           </div>
         </div>
-
-        <!-- Web Development -->
         <div class="skill-category">
-          <h3><i class="fas fa-globe"></i> Web Development</h3>
+          <h3><i class="fas fa-globe"></i> Web & Backend</h3>
           <div class="skill-items">
             <span class="skill-item">Django</span>
             <span class="skill-item">requests</span>
+            <span class="skill-item">REST APIs</span>
             <span class="skill-item">django-filter</span>
-            <span class="skill-item">HTTP</span>
-            <span class="skill-item">REST</span>
+            <span class="skill-item">HTTP protocols</span>
           </div>
         </div>
-
-        <!-- GUI Development -->
         <div class="skill-category">
-          <h3><i class="fas fa-desktop"></i> GUI Development</h3>
+          <h3><i class="fas fa-shield-alt"></i> Security & OSINT</h3>
           <div class="skill-items">
-            <span class="skill-item">tkinter</span>
-            <span class="skill-item">pyautogui</span>
+            <span class="skill-item">pywifi, keyboard</span>
+            <span class="skill-item">Faker library</span>
+            <span class="skill-item">Network analysis</span>
+            <span class="skill-item">Proxy handling</span>
+            <span class="skill-item">Encryption basics</span>
           </div>
         </div>
-
-        <!-- Security & Networking -->
         <div class="skill-category">
-          <h3><i class="fas fa-shield-alt"></i> Security & Networking</h3>
+          <h3><i class="fas fa-chart-line"></i> System & Monitoring</h3>
           <div class="skill-items">
-            <span class="skill-item">pywifi</span>
-            <span class="skill-item">keyboard</span>
-            <span class="skill-item">Faker</span>
-            <span class="skill-item">Network Analysis</span>
+            <span class="skill-item">psutil, GPUtil</span>
+            <span class="skill-item">cpuinfo, wmi</span>
+            <span class="skill-item">pynvml</span>
+            <span class="skill-item">Hardware tracking</span>
           </div>
         </div>
-
-        <!-- Databases & Data -->
         <div class="skill-category">
-          <h3><i class="fas fa-database"></i> Databases & Data</h3>
+          <h3><i class="fas fa-database"></i> Data & Storage</h3>
           <div class="skill-items">
             <span class="skill-item">SQLite</span>
             <span class="skill-item">PostgreSQL</span>
-            <span class="skill-item">PIL</span>
-            <span class="skill-item">JSON</span>
-            <span class="skill-item">Data Parsing</span>
+            <span class="skill-item">JSON parsing</span>
+            <span class="skill-item">Data scraping</span>
           </div>
         </div>
-
-        <!-- System Programming -->
         <div class="skill-category">
-          <h3><i class="fas fa-cogs"></i> System Programming</h3>
+          <h3><i class="fas fa-robot"></i> Automation & Bots</h3>
           <div class="skill-items">
-            <span class="skill-item">psutil</span>
-            <span class="skill-item">GPUtil</span>
-            <span class="skill-item">cpuinfo</span>
-            <span class="skill-item">wmi</span>
-            <span class="skill-item">pyperclip</span>
-            <span class="skill-item">pynvml</span>
-          </div>
-        </div>
-
-        <!-- Multimedia -->
-        <div class="skill-category">
-          <h3><i class="fas fa-music"></i> Multimedia</h3>
-          <div class="skill-items">
-            <span class="skill-item">playsound</span>
-            <span class="skill-item">gTTS</span>
-            <span class="skill-item">pydub</span>
-          </div>
-        </div>
-
-        <!-- Integrations & API -->
-        <div class="skill-category">
-          <h3><i class="fas fa-plug"></i> Integrations & API</h3>
-          <div class="skill-items">
-            <span class="skill-item">telebot</span>
-            <span class="skill-item">speedtest</span>
+            <span class="skill-item">telebot API</span>
+            <span class="skill-item">speedtest-cli</span>
             <span class="skill-item">googletrans</span>
-            <span class="skill-item">translate</span>
+            <span class="skill-item">Task automation</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About & Stats Section -->
     <section id="about" class="section">
       <div class="section-header">
-        <h2 class="section-title" data-en="About Me" data-ru="Обо мне">About Me</h2>
+        <h2 class="section-title" data-en="Profile Snapshot" data-ru="Краткий обзор">Profile Snapshot</h2>
       </div>
-
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-number">1+</div>
           <div class="stat-label" data-en="Years Experience" data-ru="Лет опыта">Years Experience</div>
         </div>
-
         <div class="stat-card">
           <div class="stat-number">15</div>
-          <div class="stat-label" data-en="Projects" data-ru="Проектов">Projects</div>
+          <div class="stat-label" data-en="Total Projects" data-ru="Всего проектов">Total Projects</div>
         </div>
-
         <div class="stat-card">
           <div class="stat-number">30+</div>
-          <div class="stat-label" data-en="Technologies" data-ru="Технологий">Technologies</div>
+          <div class="stat-label" data-en="Tech Stack" data-ru="Технологий">Tech Stack</div>
         </div>
-
         <div class="stat-card">
           <div class="stat-number">8</div>
-          <div class="stat-label" data-en="Categories" data-ru="Категорий">Categories</div>
+          <div class="stat-label" data-en="Skill Domains" data-ru="Областей">Skill Domains</div>
         </div>
       </div>
 
-      <div class="skill-category" style="margin-top: 24px;">
+      <div class="skill-category" style="margin-top: 12px;">
         <h3><i class="fas fa-graduation-cap"></i> <span data-en="Education" data-ru="Образование">Education</span></h3>
-        <p style="color: var(--color-text-secondary); margin-top: 8px;" data-en="Studying to become an information security technician in college" data-ru="Учусь на техника по защите информации в колледже">
-          Studying to become an information security technician in college
+        <p style="color: var(--color-text-secondary); margin-top: 12px;" data-en="Studying Information Security Technician program in college. Building hands-on security and development skills daily." data-ru="🎓 Учусь на техника по защите информации в колледже. Ежедневно развиваю практические навыки в сфере безопасности и разработки.">
+          Studying Information Security Technician program in college. Building hands-on security and development skills daily.
         </p>
       </div>
 
-      <div class="skill-category" style="margin-top: 16px;">
-        <h3><i class="fas fa-bullseye"></i> <span data-en="Goals" data-ru="Цели">Goals</span></h3>
-        <p style="color: var(--color-text-secondary); margin-top: 8px;" data-en="Looking for interesting projects, want to find my main development stack, continue learning and growing as a developer" data-ru="Ищу интересные проекты, хочу найти основной стек разработки, продолжать учиться и расти как разработчик">
-          Looking for interesting projects, want to find my main development stack, continue learning and growing as a developer
+      <div class="skill-category" style="margin-top: 20px;">
+        <h3><i class="fas fa-bullseye"></i> <span data-en="Current Focus" data-ru="Текущие цели">Current Focus</span></h3>
+        <p style="color: var(--color-text-secondary); margin-top: 12px;" data-en="Looking for challenging open-source projects, refining my core development stack, and mastering advanced cybersecurity concepts. Open to collaboration and knowledge sharing." data-ru="🚀 Ищу интересные open-source проекты, оттачиваю основной стек разработки и осваиваю продвинутые концепции кибербезопасности. Открыт к сотрудничеству и обмену знаниями.">
+          Looking for challenging open-source projects, refining my core development stack, and mastering advanced cybersecurity concepts. Open to collaboration and knowledge sharing.
         </p>
       </div>
     </section>
@@ -1170,97 +909,45 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© <span id="current-year">2023</span> waratecs123. <span data-en="All projects for educational purposes" data-ru="Все проекты для образовательных целей">All projects for educational purposes</span></p>
-      <p style="margin-top: 8px; color: var(--color-text-tertiary);">
+      <p>© <span id="current-year">2025</span> waratecs123 · <span data-en="All projects for educational & research purposes" data-ru="Все проекты для образовательных и исследовательских целей">All projects for educational & research purposes</span></p>
+      <p style="margin-top: 12px;">
         <i class="fab fa-github"></i>
-        <a href="https://github.com/waratecs123/Other-Mine-Projects" style="color: var(--color-accent); text-decoration: none;" target="_blank">
-          github.com/waratecs123
-        </a>
+        <a href="https://github.com/waratecs123" target="_blank">github.com/waratecs123</a>
       </p>
     </div>
   </footer>
 
   <script>
-    // Language switching
     document.addEventListener('DOMContentLoaded', function() {
+      // Language switching functionality
       const langButtons = document.querySelectorAll('.lang-btn');
       let currentLang = 'en';
 
       function setLanguage(lang) {
         currentLang = lang;
-
-        // Update all elements with data attributes
         document.querySelectorAll('[data-en], [data-ru]').forEach(element => {
           const attr = `data-${lang}`;
           if (element.hasAttribute(attr)) {
-            const text = element.getAttribute(attr);
-
-            // Special handling for different element types
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-              element.value = text;
-            } else if (element.hasAttribute('placeholder')) {
-              element.placeholder = text;
-            } else {
-              element.textContent = text;
-            }
+            element.textContent = element.getAttribute(attr);
           }
         });
-
-        // Update active button
         langButtons.forEach(btn => {
-          if (btn.getAttribute('data-lang') === lang) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
+          btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
-
-        // Update HTML lang attribute
         document.documentElement.lang = lang;
       }
 
-      // Initialize language
-      setLanguage(currentLang);
-
-      // Add click events to language buttons
+      setLanguage('en');
       langButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-          const lang = this.getAttribute('data-lang');
-          if (lang !== currentLang) {
-            setLanguage(lang);
-          }
-        });
+        btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
       });
 
-      // Staggered animation for repositories
-      const repos = document.querySelectorAll('.repo');
-      repos.forEach((repo, index) => {
-        repo.style.animationDelay = `${index * 0.05}s`;
-      });
+      // Set current year in footer
+      document.getElementById('current-year').textContent = new Date().getFullYear();
 
-      // Staggered animation for project cards
-      const projectCards = document.querySelectorAll('.project-card');
-      projectCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-      });
-
-      // Update year in footer
-      const yearElement = document.getElementById('current-year');
-      if (yearElement) {
-        const currentYear = new Date().getFullYear();
-        yearElement.textContent = currentYear;
-      }
-
-      // GitHub-like hover effects
-      document.querySelectorAll('.repo, .project-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-4px)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0)';
-        });
-      });
+      // Staggered animation delays
+      document.querySelectorAll('.repo').forEach((el, i) => el.style.animationDelay = `${i * 0.03}s`);
+      document.querySelectorAll('.skill-category').forEach((el, i) => el.style.animationDelay = `${i * 0.05}s`);
     });
   </script>
 </body>
